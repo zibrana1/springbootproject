@@ -1,35 +1,86 @@
-<thead>
-    <tr>
-        <th>FirstName</th>
-        <th>LastName</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Active</th>
-        <th>Phone Number</th>
-        <th>Edit</th>
-        <th>Delete</th>
-    </tr>
-</thead>
-<tbody>
-<tr th:each="user : ${users}">
-    <td th:text="${user.firstname}"></td>
-    <td th:text="${user.lastname}"></td>
-    <td th:text="${user.username}"></td>
-    <td th:text="${user.email}"></td>
-    <td th:text="${user.enabled}"></td>
-    <td th:text="${user.phoneNumber}"></td>
-    <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
-    <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
-</tr>
-</tbody>
-</table>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<div th:switch="${users}">
-    <h2 th:case="null">No users yet!</h2>
-        <div th:case="*">
-            <h2>Users</h2>
-            <table>
-                
-    </div>      
-    <p><a th:href="@{/adduser}" >Add a new user</a></p>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion roles</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+
+    <link rel="stylesheet" th:href="@{/css/Chart.min.css}">
+
+    <link rel="stylesheet" th:href="@{/css/perfect-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.svg}" type="image/x-icon">
+
+</head>
+
+<body>
+    <div id="app"><!--Main content-->
+        <span th:replace="fragments/sidebar :: sidebar"></span>
+        <div id="main"><!--Content id-->
+            <span th:replace="fragments/header :: header"></span>
+            <div class="main-content container-fluid" layout:fragment="content"><!--dynamic content-->
+                <!--you can replace this using page-->
+                <div class="container" th:switch="${roles}">
+                    <h2 th:case="null">No roles yet!</h2>
+                    <div th:case="*">
+                        <div class="headers">
+                            <h2>Roles</h2>
+                            <button class="primary"><a href="@{/addrole}">Add a new role</a></button>
+                        </div>
+                        
+                        <table class="responsive-table" border="1">
+        
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Actions</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="role : ${roles}">
+                                    <td th:text="${role.name}"></td>
+                                    <td>
+                                        <a th:href="@{/edit/{id}(id=${role.id})}" style="color: #17ad60;">Edit</a>
+                                        <a th:href="@{/delete/{id}(id=${role.id})}" style="color: red;">Delete</a>
+                                    </td>
+            
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+                <span th:replace="fragments/footer :: footer"></span>
+            </div>
+        </div>
+        
+        <script th:src="@{/js/feather.min.js}"></script>
+        <script th:src="@{/js/perfect-scrollbar.min.js}"></script>
+        <script th:src="@{/js/app.js}"></script>
+
+        <script th:src="@{/js/Chart.min.js}"></script>
+        <script th:src="@{/js/apexcharts.min.js}"></script>
+        <script th:src="@{/js/dashboard.js}"></script>
+
+        <script th:src="@{/js/main.js}"></script>
+</body>
+<script>
+    const btninfo = document.getElementById("voirinfo");
+    const info = document.getElementById("info");
+    btninfo.addEventListener("click" , function(event){
+        if (info.getAttribute("class") === "hidden") {
+            info.style.display = "block"
+            return info.setAttribute("class", "visible");
+        } else if(info.getAttribute("class") === "visible") {
+            info.style.display = "none";
+            return info.setAttribute("class", "hidden");
+        }
+    });
+</script>
+</html>

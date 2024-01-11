@@ -12,244 +12,10 @@
 
     <link rel="stylesheet" th:href="@{/css/perfect-scrollbar.css}">
     <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="shortcut icon" th:href="@{/images/favicon.svg}" type="image/x-icon">
 
 </head>
-<style>
-    @import "bourbon@5.*";
-
-// Breakpoints
-$bp-maggie: 15em; 
-$bp-lisa: 30em;
-$bp-bart: 48em;
-$bp-marge: 62em;
-$bp-homer: 75em;
-
-// Styles
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-body {
-  font-family: $font-stack-system;
-  color: rgba(0,0,0,.87);
-}
-
-a {
-  color: rgba(38,137,13,1);
-  
-  &:hover,
-  &:focus {
-    color: rgba(4,106,56,1); 
-  }
-}
-
-.container {
-  margin: 5% 3%;
-  
-  @media (min-width: $bp-bart) {
-    margin: 2%; 
-  }
-  
-  @media (min-width: $bp-homer) {
-    margin: 2em auto;
-    max-width: $bp-homer;
-  }
-}
-
-.responsive-table {
-  width: 100%;
-  margin-bottom: 1.5em;
-  border-spacing: 0;
-  
-  @media (min-width: $bp-bart) {
-    font-size: .9em; 
-  }
-  
-  @media (min-width: $bp-marge) {
-    font-size: 1em; 
-  }
-  
-  thead {
-    // Accessibly hide <thead> on narrow viewports
-    position: absolute;
-    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-    padding: 0;
-    border: 0;
-    height: 1px; 
-    width: 1px; 
-    overflow: hidden;
-    
-    @media (min-width: $bp-bart) {
-      // Unhide <thead> on wide viewports
-      position: relative;
-      clip: auto;
-      height: auto;
-      width: auto;
-      overflow: auto;
-    }
-    
-    th {
-      background-color: rgba(38,137,13,1);
-      border: 1px solid rgba(134,188,37,1);
-      font-weight: normal;
-      text-align: center;
-      color: white;
-      
-      &:first-of-type {
-        text-align: left; 
-      }
-    }
-  }
-  
-  // Set these items to display: block for narrow viewports
-  tbody,
-  tr,
-  th,
-  td {
-    display: block;
-    padding: 0;
-    text-align: left;
-    white-space: normal;
-  }
-  
-  tr {   
-    @media (min-width: $bp-bart) {
-      // Undo display: block 
-      display: table-row; 
-    }
-  }
-  
-  th,
-  td {
-    padding: .5em;
-    vertical-align: middle;
-    
-    @media (min-width: $bp-lisa) {
-      padding: .75em .5em; 
-    }
-    
-    @media (min-width: $bp-bart) {
-      // Undo display: block 
-      display: table-cell;
-      padding: .5em;
-    }
-    
-    @media (min-width: $bp-marge) {
-      padding: .75em .5em; 
-    }
-    
-    @media (min-width: $bp-homer) {
-      padding: .75em; 
-    }
-  }
-  
-  caption {
-    margin-bottom: 1em;
-    font-size: 1em;
-    font-weight: bold;
-    text-align: center;
-    
-    @media (min-width: $bp-bart) {
-      font-size: 1.5em;
-    }
-  }
-  
-  tfoot {
-    font-size: .8em;
-    font-style: italic;
-    
-    @media (min-width: $bp-marge) {
-      font-size: .9em;
-    }
-  }
-  
-  tbody {
-    @media (min-width: $bp-bart) {
-      // Undo display: block 
-      display: table-row-group; 
-    }
-    
-    tr {
-      margin-bottom: 1em;
-      
-      @media (min-width: $bp-bart) {
-        // Undo display: block 
-        display: table-row;
-        border-width: 1px;
-      }
-      
-      &:last-of-type {
-        margin-bottom: 0; 
-      }
-      
-      &:nth-of-type(even) {
-        @media (min-width: $bp-bart) {
-          background-color: rgba(0,0,0,.12);
-        }
-      }
-    }
-    
-    th[scope="row"] {
-      background-color: rgba(38,137,13,1);
-      color: white;
-      
-      @media (min-width: $bp-lisa) {
-        border-left: 1px solid rgba(134,188,37,1);
-        border-bottom: 1px solid rgba(134,188,37,1);
-      }
-      
-      @media (min-width: $bp-bart) {
-        background-color: transparent;
-        color: rgba(0,0,0.87);
-        text-align: left;
-      }
-    }
-    
-    td {
-      text-align: right;
-      
-      @media (min-width: $bp-bart) {
-        border-left: 1px solid rgba(134,188,37,1);
-        border-bottom: 1px solid rgba(134,188,37,1);
-        text-align: center; 
-      }
-      
-      &:last-of-type {
-        @media (min-width: $bp-bart) {
-          border-right: 1px solid rgba(134,188,37,1);
-        } 
-      }
-    }
-    
-    td[data-type=currency] {
-      text-align: right; 
-    }
-    
-    td[data-title]:before {
-      content: attr(data-title);
-      float: left;
-      font-size: .8em;
-      color: rgba(0,0,0,.54);
-      
-      @media (min-width: $bp-lisa) {
-        font-size: .9em; 
-      }
-      
-      @media (min-width: $bp-bart) {
-        // Don’t show data-title labels 
-        content: none; 
-      }
-    } 
-  }
-}
-</style>
 
 <body>
     <div id="app"><!--Main content-->
@@ -261,9 +27,13 @@ a {
                 <div class="container" th:switch="${users}">
                     <h2 th:case="null">No users yet!</h2>
                     <div th:case="*">
-                        <h2>Users</h2>
-                        <table class="responsive-table">
-                            <caption>Top 10 Grossing Animated Films of All Time</caption>
+                        <div class="headers">
+                            <h2>Users</h2>
+                            <button class="primary"><a th:href="@{/adduser}">Add a new user</a></button>
+                        </div>
+                        
+                        <table class="responsive-table" border="1">
+        
                             <thead>
                                 <tr>
                                     <th>FirstName</th>
@@ -272,20 +42,11 @@ a {
                                     <th>Email</th>
                                     <th>Active</th>
                                     <th>Phone Number</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Role</th>
+                                    <th>Actions</th>
+                                    
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="7">Sources: <a
-                                            href="http://en.wikipedia.org/wiki/List_of_highest-grossing_animated_films"
-                                            rel="external">Wikipedia</a> &amp; <a
-                                            href="http://www.boxofficemojo.com/genres/chart/?id=animation.htm"
-                                            rel="external">Box Office Mojo</a>. Data is current as of March 31, 2021.
-                                    </td>
-                                </tr>
-                            </tfoot>
                             <tbody>
                                 <tr th:each="user : ${users}">
                                     <td th:text="${user.firstname}"></td>
@@ -294,18 +55,23 @@ a {
                                     <td th:text="${user.email}"></td>
                                     <td th:text="${user.enabled}"></td>
                                     <td th:text="${user.phoneNumber}"></td>
-                                    <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
-                                    <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
+                                    <td></td>
+                                    <td>
+                                        <a th:href="@{/edit/{id}(id=${user.id})}" style="color: #17ad60;">Edit</a>
+                                        <a th:href="@{/delete/{id}(id=${user.id})}" style="color: red;">Delete</a>
+                                    </td>
+                            
                                 </tr>
                             </tbody>
 
                         </table>
                     </div>
-
+                    <button><a th:href="@{/listroles}">View Roles</a></button>
                 </div>
                 <span th:replace="fragments/footer :: footer"></span>
             </div>
         </div>
+        
         <script th:src="@{/js/feather.min.js}"></script>
         <script th:src="@{/js/perfect-scrollbar.min.js}"></script>
         <script th:src="@{/js/app.js}"></script>
@@ -315,6 +81,6 @@ a {
         <script th:src="@{/js/dashboard.js}"></script>
 
         <script th:src="@{/js/main.js}"></script>
+        <script th:src="@{/js/bouton.js}"></script>
 </body>
-
 </html>
