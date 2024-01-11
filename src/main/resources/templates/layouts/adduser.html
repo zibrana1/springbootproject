@@ -111,6 +111,14 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <div th:each="role :${roles}">
+                            <input type="checkbox" name="rolename" id="" th:value="${role.name}">
+                            <label for="rolename" th:text="${role.name}"></label>
+                        </div>
+            
+                    </div>
+
                     <!-- Select Basic -->
 
                     <!-- Success message -->
@@ -233,7 +241,7 @@
                 }
             }
         })
-        .on('success.form.bv', function(e) {
+        .on('success.form.bv', function(e) {<th>Delete</th>
             $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
                 $('#contact_form').data('bootstrapValidator').resetForm();
 

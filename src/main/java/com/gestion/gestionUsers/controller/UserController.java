@@ -5,6 +5,7 @@
 package com.gestion.gestionUsers.controller;
 
 import com.gestion.gestionUsers.model.User;
+import com.gestion.gestionUsers.repository.RoleRepository;
 import com.gestion.gestionUsers.repository.UserRepository;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class UserController {
     @Autowired
     
     private UserRepository userRepository;
+    private RoleRepository roleRepository;
     @GetMapping("/index")
     public String showUserList(Model model) {
     model.addAttribute("users", userRepository.findAll());

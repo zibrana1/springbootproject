@@ -47,7 +47,7 @@ public class User {
     
     @Basic
     @Column(nullable=true)
-    private Boolean enabled;
+    private Boolean enabled=false;
     
     @ManyToMany
     @JoinTable(
