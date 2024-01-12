@@ -29,7 +29,7 @@
             
             <div class="container">
 
-                <form class="well form-horizontal" th:action="@{/update/{id}(id=$(user.id))}"  th:object="${user}" method="post" id="contact_form">
+                <form class="well form-horizontal" th:action="@{/update/{id}(id=${user.id})}"  th:object="${user}" method="post" id="contact_form">
                     <fieldset>
 
                     <!-- Form Name -->
@@ -107,6 +107,16 @@
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                             <input  placeholder="(228)" class="form-control" type="text" th:field="*{phoneNumber}">
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Enabled</label>
+                        <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                            <input  placeholder="enabled" class="form-control" type="text" th:field="*{enabled}">
                         </div>
                         </div>
                     </div>

@@ -131,3 +131,6 @@ th {
     display: flex;
     justify-content: space-between;
 }
+.sidebar-wrapper{
+    background-color: #0d453c;
+}
