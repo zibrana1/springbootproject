@@ -40,9 +40,9 @@
                                     <th>LastName</th>
                                     <th>Username</th>
                                     <th>Email</th>
-                                    <th>Active</th>
+                                    <th>Etat</th>
                                     <th>Phone Number</th>
-                                    <th>Role</th>
+                                    
                                     <th>Actions</th>
                                     
                                 </tr>
@@ -53,9 +53,10 @@
                                     <td th:text="${user.lastname}"></td>
                                     <td th:text="${user.username}"></td>
                                     <td th:text="${user.email}"></td>
-                                    <td th:text="${user.enabled}"></td>
+                                    <td th:text="${user.enabled} ? 'ACTIVE' : 'INACTIVE'"></td>
                                     <td th:text="${user.phoneNumber}"></td>
-                                    <td></td>
+                                    
+                                   
                                     <td>
                                         <a th:href="@{/edit/{id}(id=${user.id})}" style="color: #17ad60;">Edit</a>
                                         <a th:href="@{/delete/{id}(id=${user.id})}" style="color: red;">Delete</a>

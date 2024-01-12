@@ -29,7 +29,7 @@
                     <div th:case="*">
                         <div class="headers">
                             <h2>Roles</h2>
-                            <button class="primary"><a href="@{/addrole}">Add a new role</a></button>
+                            <button class="primary"><a th:href="@{/createRole}">Add a new role</a></button>
                         </div>
                         
                         <table class="responsive-table" border="1">
@@ -46,7 +46,7 @@
                                     <td th:text="${role.name}"></td>
                                     <td>
                                         <a th:href="@{/edit/{id}(id=${role.id})}" style="color: #17ad60;">Edit</a>
-                                        <a th:href="@{/delete/{id}(id=${role.id})}" style="color: red;">Delete</a>
+                                        <a th:href="@{/deleterole/{id}(id=${role.id})}" style="color: red;">Delete</a>
                                     </td>
             
                                 </tr>
@@ -54,7 +54,7 @@
 
                         </table>
                     </div>
-
+                    <button><a th:href="@{/index}">BACK</a></button>
                 </div>
                 <span th:replace="fragments/footer :: footer"></span>
             </div>
