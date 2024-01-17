@@ -1,0 +1,37 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar" th:fragment="_sidebar">
+        <ul class="nav">
+
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/dashboard}">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+    
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">Users</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" th:href="@{/listusers}"> List users </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Create user </a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
+              <i class="fas fa-user"></i>
+              <span class="menu-title">Roles</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="charts">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" th:href="@{/table}">List Role</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>

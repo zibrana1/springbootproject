@@ -33,17 +33,17 @@ public class UserController {
 
     @Autowired
     private RoleRepository roleRepository;
-    @GetMapping("/index")
+    @GetMapping("/listusers")
     public String showUserList(Model model) {
     model.addAttribute("users", userRepository.findAll());
-    return "layouts/users";
+    return "pages/tables/users";
 }
     
     @GetMapping("/adduser")
     public String showFormAddUser(Model model){
         model.addAttribute("user", new User());
         model.addAttribute("roles", roleRepository.findAll());
-        return "layouts/adduser";
+        return "pages/forms/createuser";
     }
 
     @PostMapping("/adduser")
