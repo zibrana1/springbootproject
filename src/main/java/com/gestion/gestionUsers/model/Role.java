@@ -4,8 +4,11 @@
  */
 package com.gestion.gestionUsers.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 /**
  *
@@ -15,14 +18,18 @@ import javax.persistence.*;
 @Table(name = "role")
 public class Role {
     @Id
+    @Column(name="role_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long role_id;
 
+    @Column(length = 40, nullable=false)
+    @NotBlank(message="Field role name is required")
     private String name;
     
     @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
-
+    private List<User> users = new ArrayList<>();
+    
+    
     public Role() {
     }
 
@@ -30,18 +37,20 @@ public class Role {
         this.name = name;
     }
 
-    public Role(String name, Set<User> users) {
+    public Role(String name, List<User> users) {
         this.name = name;
         this.users = users;
     }
 
-    public Long getId() {
+    public Long getRole_id() {
         return role_id;
     }
 
-    public void setId(Long id) {
-        this.role_id = id;
+    public void setRole_id(Long role_id) {
+        this.role_id = role_id;
     }
+
+    
 
     public String getName() {
         return name;
@@ -51,11 +60,11 @@ public class Role {
         this.name = name;
     }
 
-    public Set<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 

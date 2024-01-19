@@ -13,8 +13,28 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class LoginController {
+
+    @GetMapping("/home")
+    public String welcomePage(){
+        return "home";
+    }
+
     @GetMapping("/login")
     public String loginPage(){
-        return "login";
+
+        return "pages/samples/login";
     }
+
+    @GetMapping("/dashboard")
+    public String welcomeDashboard(){
+        return "pages/accueil";
+    }
+
+    @GetMapping("/table")
+    public String PageAccueil() {
+        
+        return "pages/tables/basic-table";
+    }
+
+
 }

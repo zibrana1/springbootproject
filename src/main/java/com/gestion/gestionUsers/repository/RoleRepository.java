@@ -14,5 +14,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface RoleRepository extends CrudRepository<Role, Long>{
+
+    public boolean existsByName(String name);
+    
+    
     
 }
