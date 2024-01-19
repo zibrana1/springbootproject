@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Management users</title>
 </head>
 <body>
   <div class="col-lg-12 grid-margin stretch-card" layout:fragment="content">
@@ -48,11 +48,34 @@
                 <td th:text="${user.username}"></td>
                 <td th:text="${user.email}"></td>
                 <td th:text="${user.enabled} ? 'ACTIVE' : 'INACTIVE'"></td>
-                <td></td>
+                <td>
+                  <span th:each="role : ${user.roles}" th:text="${role.name} + ' '"></span>
+                </td>
                 <td th:text="${user.phoneNumber}"></td>
                 <td>
-                    <a href="#" class="btn btn-primary" ><i class="fas fa-edit fa-lg fa-fw"></i></a>
-                    <a href="#" class="btn btn-danger" ><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <a th:href="@{/edituser/{id}(id=${user.user_id})}" class="btn btn-primary" ><i class="fas fa-edit fa-lg fa-fw"></i></a>
+                    <a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true" data-toggle="modal" data-target="#confirmationModal"></i></a>
+
+                    <!-- Modal de confirmation -->
+                    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="confirmationModalLabel">Confirmation de suppression</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
+                              <div class="modal-body">
+                                  Êtes-vous sûr de vouloir supprimer cet élément?
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                  <a th:href="@{/deleteuser/{id}(id=${user.user_id})}" class="btn btn-danger" >Supprimer</a>
+                              </div>                              
+                          </div>
+                      </div>
+                    </div>
                 </td>
         
             </tr>
@@ -65,5 +88,27 @@
   </div>
   
 </body>
+
+<!-- <script>
+  function deleteUser(userId) {
+
+      // Envoyez une requête AJAX pour effectuer la suppression
+      $.ajax({
+          type: 'POST', // Utilisez 'POST' si votre serveur ne prend pas en charge DELETE
+          url: 'gestionusers/deleteuser/' + userId,
+          success: function(response) {
+              // La suppression a réussi, effectuez des actions supplémentaires si nécessaire
+              // Fermez le modal après la suppression si nécessaire
+              $('#confirmationModal').modal('hide');
+          },
+          error: function(error) {
+              // La suppression a échoué, gérez les erreurs si nécessaire
+              console.error("Erreur de suppression", error);
+          }
+      });
+      
+      
+  }
+</script> -->
 
 </html>

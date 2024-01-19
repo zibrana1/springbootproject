@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{dashboard}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create role</title>
+</head>
+<body>
+  <div class="col-md-6 grid-margin stretch-card" layout:fragment="content" id="myForm">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Update role</h4>
+        <p class="card-description">
+          Update information of a user's role
+        </p>
+        <form class="forms-sample" th:action="@{/editrole/{role.getRole_id()}}" th:object="${role}" method="post">
+          <div class="form-group">
+            <label for="exampleInputFirstname">Name</label>
+            <input type="text" class="form-control" id="exampleInputFirstname" placeholder="role name" th:field="*{name}">
+            <span th:if="${#fields.hasErrors('name')}"style="color:red;" th:errors="*{name}"></span>
+          </div>
+          <button type="submit" class="btn btn-primary mr-2">Submit</button>
+          <a th:href="@{/listroles}" class="btn btn-light">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

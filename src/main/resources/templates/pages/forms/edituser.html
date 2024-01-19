@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create user</title>
+  <title>Update user</title>
+  
 </head>
 <body>
   <div class="col-md-6 grid-margin stretch-card" layout:fragment="content" id="myForm">
@@ -11,9 +12,9 @@
       <div class="card-body">
         <h4 class="card-title">Create user</h4>
         <p class="card-description">
-          Add a new user 
+          Update information of a user
         </p>
-        <form class="forms-sample" th:action="@{/adduser}" th:object="${user}" method="post">
+        <form class="forms-sample" th:action="@{/updateuser/{id}(id=${user.user_id})}" th:object="${user}" method="post">
           <div class="form-group">
             <label for="exampleInputFirstname">First Name</label>
             <input type="text" class="form-control" id="exampleInputFirstname" placeholder="first name" th:field="*{firstname}">
@@ -65,12 +66,8 @@
             <input type="checkbox"  th:id="${'role_' + role.role_id}" name="roles" class="form-check-primary" th:field="*{roles}" th:value="${role.role_id}">
             <label th:for="${'role_' + role.role_id}" th:text="${role.name}"></label>
           </div>
-          <button  id="btnsubmit"  type="submit" class="btn btn-primary mr-2" >
-            submit
-          </button>
-          
-         
-         <a th:href="@{/listusers}" class="btn btn-light">Cancel</a>
+          <button type="submit" class="btn btn-primary mr-2">Submit</button>
+          <a th:href="@{/listusers}" class="btn btn-light">Cancel</a>
         </form>
       </div>
     </div>
